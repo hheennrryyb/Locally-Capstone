@@ -1,19 +1,24 @@
 import React from 'react'
 import { client } from '../lib/client'
-import { Product, FooterBanner, HeroBanner } from '../components'
+import { Product, FooterBanner, Banner, Hero, FeaturedMakers } from '../components'
 
-const Home = ({ products, bannerData, categoryData, retailerData }) => {
+const Home = ({ products, bannerData, heroData, categoryData, retailerData }) => {
+  console.log(retailerData)
   return (
     <>
-      <h1 className='products-heading'>Locally</h1>
-      <h2>Shop From All Your Local Favorite Sellers </h2>
-      <HeroBanner HeroBanner={bannerData.length && bannerData[0]} />
+      <Hero heroData={heroData} />
 
-      <div className='products-container'>
-        {products?.map((product) => <Product key={product._id} product={product} />)}
+      {/* <Banner Banner={bannerData.length && bannerData[0]} /> */}
+      <FeaturedMakers retailerData={retailerData} />
+
+      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Trending Products</h2>
+        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {products?.map((product) => <Product key={product._id} product={product} />)}
+        </div>
       </div>
 
-      <FooterBanner footerBanner={bannerData && bannerData[0]} />
+      {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
     </>
   )
 }
@@ -30,11 +35,14 @@ export const getServerSideProps = async () => {
   const categoryQuery = '* [_type == "category"]';
   const categoryData = await client.fetch(categoryQuery);
 
-  // const retailerQuery = '* [_type == "retailer"]';
-  // const retailerData = await client.fetch(retailerQuery);
+  const heroQuery = '* [_type == "hero"]';
+  const heroData = await client.fetch(heroQuery);
+
+  const retailerQuery = `*[_type == 'retailer'] {...,"product": *[_type == 'product' && references(^._id)]}`;
+  const retailerData = await client.fetch(retailerQuery);
 
   return {
-    props: { products, bannerData, categoryData }
+    props: { products, bannerData, categoryData, heroData, retailerData }
     //Passed to top props
   }
 }

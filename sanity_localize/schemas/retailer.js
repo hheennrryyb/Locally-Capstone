@@ -1,11 +1,11 @@
 export default {
     name: 'retailer',
-    title: 'Retailer',
+    title: 'Maker',
     type: 'document',
     fields: [
         {
-            name: 'title',
-            title: 'Title',
+            name: 'name',
+            title: 'Maker Name',
             type: 'string',
         },
         {
@@ -18,8 +18,8 @@ export default {
             },
         },
         {
-            name: 'logo',
-            title: 'Logo',
+            name: 'image',
+            title: 'Profile Photo',
             type: 'image',
         },
         {
@@ -46,8 +46,8 @@ export default {
     ],
     preview: {
         select: {
-            title: 'title',
-            media: 'logo',
+            title: 'name',
+            media: 'image',
         },
     },
 }

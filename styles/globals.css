@@ -1,11 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body,
 * {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  box-sizing: border-box;
 
 }
 
@@ -22,7 +23,12 @@ a {
   max-width: 1400px;
   margin: auto;
   width: 100%;
+  z-index: -1;
 
+}
+
+.top-full {
+  z-index: 999;
 }
 
 .layout {
@@ -158,10 +164,6 @@ span.text-red {
   line-height: 0.9;
   width: 100%;
 
-}
-
-.hero-banner-container .beats-solo {
-  font-size: 20px;
 }
 
 .hero-banner-container button {
