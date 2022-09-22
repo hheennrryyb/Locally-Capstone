@@ -26,7 +26,7 @@ const Home = ({ products, bannerData, heroData, categoryData, retailerData }) =>
 //pre-render page request using data returned below: 
 export const getServerSideProps = async () => {
   // Grab all data from the sanity dashboard; 
-  const query = '* [_type == "product"]';
+  const query = "*[_type == 'product'] {...,categories->, retailer->}";
   const products = await client.fetch(query);
 
   const bannerQuery = '* [_type == "banner"]';
@@ -42,7 +42,7 @@ export const getServerSideProps = async () => {
   const retailerData = await client.fetch(retailerQuery);
 
   return {
-    props: { products, bannerData, categoryData, heroData, retailerData }
+    props: { retailerData, heroData, categoryData, products, bannerData }
     //Passed to top props
   }
 }

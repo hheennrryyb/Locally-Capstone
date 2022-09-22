@@ -3,8 +3,9 @@ import Link from 'next/link'
 
 import { urlFor } from '../lib/client'
 
-const Product = ({ product: { image, name, slug, price, _id, } }) => {
+const Product = ({ product: { image, name, slug, price, _id, retailer } }) => {
     // console.log(urlFor(image && image[0]))
+
     return (
         <div>
 
@@ -26,9 +27,11 @@ const Product = ({ product: { image, name, slug, price, _id, } }) => {
                                 </div>
                             </Link>
                         </h3>
-                        {/* <p className="mt-1 text-sm text-gray-500">{color}</p> */}
+                        {retailer.name &&
+                            <p className="mt-1 text-sm text-gray-500">By: {retailer.name}</p>
+                        }
                     </div>
-                    <p className="text-sm font-medium text-gray-900">{price}</p>
+                    <p className="text-sm font-medium text-gray-900 ml-10">{price}</p>
                 </div>
             </div>
 
