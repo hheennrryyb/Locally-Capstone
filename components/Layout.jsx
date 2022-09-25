@@ -6,9 +6,9 @@ import Footer from './Footer'
 
 const Layout = ({ children }) => {
     return (
-        <div className='layout'>
+        <div className=''>
             <Head>
-                <title>Henry Demo Store</title>
+                <title>Locally</title>
             </Head>
             <header>
                 <Navbar />
@@ -23,5 +23,6 @@ const Layout = ({ children }) => {
         </div>
     )
 }
+
 
 export default Layout

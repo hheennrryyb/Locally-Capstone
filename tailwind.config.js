@@ -9,11 +9,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
-        },
+
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+
       },
+      height: {
+        '128': '38rem',
+      }
     },
     plugins: [
       require('@tailwindcss/aspect-ratio'),

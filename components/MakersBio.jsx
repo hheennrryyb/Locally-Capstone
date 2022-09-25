@@ -11,16 +11,16 @@ import "slick-carousel/slick/slick-theme.css";
 
 function MakersBio({ retailerData }) {
     const settings = {
-        // dots: true,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 3
     };
-    console.log(retailerData.slug.current)
+
     return (
         <div>
-            <div key={retailerData._id} className="group relative rounded-md  p-6 bg-white">
+            <div key={retailerData._id} className=" h-128 rounded-md  p-6 bg-white drop-shadow-md ">
                 <Link href={`/retailer/${retailerData.slug.current}`}>
                     <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                         <img
@@ -35,12 +35,11 @@ function MakersBio({ retailerData }) {
                         <h3 className="text-sm text-gray-700">
                             <Link href={`/retailer/${retailerData.slug.current}`}>
                                 <div>
-                                    <span aria-hidden="true" className="absolute inset-0" />
-                                    {retailerData.name}
+                                    <span className="text-lg font-medium" > {retailerData.name}</span>
                                 </div>
                             </Link>
                         </h3>
-                        <p className="mt-1 text-sm text-gray-500">{retailerData.shortDescription}</p>
+                        <p className="mt-1 text-sm text-gray-500 max-h-14 text-ellipsis overflow-hidden">{retailerData.shortDescription}</p>
                     </div>
                     {/* <p className="text-sm font-medium text-gray-900">{price}</p> */}
                 </div>
@@ -48,14 +47,13 @@ function MakersBio({ retailerData }) {
                 <div>
                     <Slider {...settings}>
                         {retailerData.product?.map((product) => {
-                            console.log(product)
                             return (
                                 <Link href={`/product/${product.slug.current}`}>
-                                    <div className='mt-5'>
+                                    <div className='mt-5 m-auto'>
                                         <img
                                             src={urlFor(product.image[0])}
                                             //   alt={product.imageAlt}
-                                            className="h-28 w-28 object-cover object-center rounded-full"
+                                            className="h-24 w-24 object-cover object-center rounded-full"
                                         />
                                     </div>
                                 </Link>

@@ -14,139 +14,237 @@
   }
   ```
 */
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useStateContext } from '../context/StateContext'
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+import { client } from '../lib/client'
+
+import { AiOutlineShopping } from 'react-icons/ai'
+
+import Logo from '../data/logo/Locally.svg'
+// import Logo2 from '../data/logo/Locally.png'
+
+
 
 import { Cart } from './'
 
 function Navbar() {
+    const { showCart, setShowCart, totalQuantities } = useStateContext()
+
+    const navigation = [
+        // { name: 'Home', href: '#', current: true },
+        { name: 'Makers', href: '/retailer', current: false },
+        { name: 'Maps', href: '/maps', current: false },
+        { name: 'About', href: '#', current: false },
+    ]
+    const categoryLinks = [
+        { href: '/category', label: 'All Collections' },
+        { href: '/category/wedding-and-party', label: 'Wedding & Party' },
+        { href: '/category/jewellery-and-accessories', label: 'Jewellery & Accessories' },
+        { href: '/category/home-and-living', label: 'Home & Living' },
+        { href: '/category/art-and-collectibles', label: 'Art & Collectibles' },
+        { href: '/category/clothing-and-shoes', label: 'Clothing & Shoes' },
+        { href: '/category/toys-and-entertainment', label: 'Toys & Entertainment' },
+    ]
+
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ')
+    }
     return (
         <>
 
-            <nav className="bg-white border-gray-200 px-2 md:px-4 py-2.5 dark:bg-gray-900">
-                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <Link href="/" className="flex items-center">
-                        <div>
-                            {/* <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" /> */}
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Locally</span>
-                        </div>
-                    </Link>
-                    <div className="flex items-center md:order-2">
-                        <a href="#" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
-                        <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign up</a>
-                        <button data-collapse-toggle="mega-menu" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
-                            <span className="sr-only">Open main menu</span>
-                            <svg aria-hidden="true" className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        </button>
-                    </div>
-                    <div id="mega-menu" className="hidden justify-between items-center w-full text-sm md:flex md:w-auto md:order-1">
-                        <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-blue-600 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
-                            </li>
-                            <li>
-                                <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-gray-700 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-                                    Company <svg aria-hidden="true" className="ml-1 w-5 h-5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                </button>
-                                <div id="mega-menu-dropdown" className='grid hidden absolute z-10 grid-cols-2 w-auto text-sm bg-white rounded-lg border border-gray-100 shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 37px);'>
-                                    <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                                        <ul className="space-y-4" aria-labelledby="mega-menu-dropdown-button">
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    About Us
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Library
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Resources
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Pro Version
-                                                </a>
-                                            </li>
-                                        </ul>
+            <Disclosure as="nav" className="bg-white">
+                {({ open }) => (
+                    <>
+                        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                            <div className="relative flex h-16 items-center justify-between">
+                                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                                    {/* Mobile menu button*/}
+                                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-black-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                        <span className="sr-only">Open main menu</span>
+                                        {open ? (
+                                            <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                        ) : (
+                                            <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                        )}
+                                    </Disclosure.Button>
+                                </div>
+                                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                                    <div className="flex flex-shrink-0 items-center">
+                                        <Link href='/'>
+                                            <div className="block w-28 lg:hidden">
+                                                <Image
+                                                    // height={50}
+                                                    src={Logo}
+                                                    alt="Locally"
+                                                />
+                                            </div>
+                                        </Link>
+                                        <Link href='/'>
+                                            <div className="hidden w-28 lg:block md:w-40">
+                                                <Image
+                                                    // height={50}
+                                                    src={Logo}
+                                                    alt="Locally"
+                                                />
+
+                                            </div>
+                                        </Link>
                                     </div>
-                                    <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                                        <ul className="space-y-4">
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Blog
+                                    <div className="hidden sm:ml-6 sm:block lg:mt-2">
+                                        <div className="flex space-x-4">
+
+                                            <Menu>
+                                                <Menu.Button className='text-black-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Collections</Menu.Button>
+                                                <Menu.Items className='absolute top-12 left-10 z-10 mt-2 w-56  rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                                                    {categoryLinks.map((link) => (
+                                                        /* Use the `active` state to conditionally style the active item. */
+                                                        <Menu.Item key={link.href} as={Fragment}>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href={link.href}
+                                                                    className={`${active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700'
+                                                                        }`}
+                                                                >
+                                                                    {link.label}
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
+                                                    ))}
+                                                </Menu.Items>
+                                            </Menu>
+                                            {navigation.map((item) => (
+                                                <a
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    className={classNames(
+                                                        item.current ? 'bg-gray-900 text-white' : 'text-black-300 hover:bg-gray-700 hover:text-white',
+                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                    )}
+                                                    aria-current={item.current ? 'page' : undefined}
+                                                >
+                                                    {item.name}
                                                 </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Newsletter
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Playground
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    License
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="p-4 text-gray-900 dark:text-white">
-                                        <ul className="space-y-4">
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Contact Us
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Support Center
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                                    Terms
-                                                </a>
-                                            </li>
-                                        </ul>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Team</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+                                <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                                    <Menu as="div" className="relative ml-3">
+                                        <div>
+                                            <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                                <span className="sr-only">Open user menu</span>
+                                                <img
+                                                    className="h-8 w-8 rounded-full"
+                                                // src=""
+                                                // alt=""
+                                                />
+                                            </Menu.Button>
+                                        </div>
+                                        <Transition
+                                            as={Fragment}
+                                            enter="transition ease-out duration-100"
+                                            enterFrom="transform opacity-0 scale-95"
+                                            enterTo="transform opacity-100 scale-100"
+                                            leave="transition ease-in duration-75"
+                                            leaveFrom="transform opacity-100 scale-100"
+                                            leaveTo="transform opacity-0 scale-95"
+                                        >
+                                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="#"
+                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700')}
+                                                        >
+                                                            Your Profile
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="#"
+                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700')}
+                                                        >
+                                                            Settings
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <a
+                                                            href="#"
+                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700')}
+                                                        >
+                                                            Sign out
+                                                        </a>
+                                                    )}
+                                                </Menu.Item>
+                                            </Menu.Items>
+                                        </Transition>
+                                    </Menu>
+                                    <div className="ml-4 flow-root lg:ml-6">
+                                        <a onClick={() => setShowCart(true)} className="group -m-2 flex items-center p-2">
+                                            <AiOutlineShopping
+                                                className="h-6 w-6 flex-shrink-0 text-black-400 group-hover:text-black-500"
+                                                aria-hidden="true"
+                                            />
+                                            <span className="ml-2 text-sm font-medium text-black-700 group-hover:text-black-800">{totalQuantities}</span>
+                                            <span className="sr-only">items in cart, view bag</span>
+                                        </a>
+                                    </div>
+
+                                    {/* Profile dropdown */}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <Disclosure.Panel className="sm:hidden">
+                            <div className="space-y-1 px-2 pt-2 pb-3">
+                                {navigation.map((item) => (
+                                    <Disclosure.Button
+                                        key={item.name}
+                                        as="a"
+                                        href={item.href}
+                                        className={classNames(
+                                            item.current ? 'bg-gray-900 text-white' : 'text-black-300 hover:bg-gray-700 hover:text-white',
+                                            'block px-3 py-2 rounded-md text-base font-medium'
+                                        )}
+                                        aria-current={item.current ? 'page' : undefined}
+                                    >
+                                        {item.name}
+                                    </Disclosure.Button>
+                                ))}
+                            </div>
+                        </Disclosure.Panel>
+                    </>
+                )}
+            </Disclosure>
+
+            {showCart && <Cart />}
         </>
     )
 }
 
+export const getServerSideProps = async () => {
+
+    const NavQuery = `*[_type == "navigation"]`;
+    const NavData = await client.fetch(NavQuery);
+
+    return {
+        props: { NavData }
+        //Passed to top props
+    }
+}
 export default Navbar
 
-{/* Cart */ }
-{/* <div className="ml-4 flow-root lg:ml-6">
-                                    <a onClick={() => setShowCart(true)} className="group -m-2 flex items-center p-2">
-                                        <ShoppingBagIcon
-                                            className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                                            aria-hidden="true"
-                                        />
-                                        <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                                        <span className="sr-only">items in cart, view bag</span>
-                                    </a>
-                                </div> */}
-                                // {showCart && <Cart />}
+
+
+

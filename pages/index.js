@@ -2,8 +2,8 @@ import React from 'react'
 import { client } from '../lib/client'
 import { Product, FooterBanner, Banner, Hero, FeaturedMakers } from '../components'
 
-const Home = ({ products, bannerData, heroData, categoryData, retailerData }) => {
-  console.log(retailerData)
+const Home = ({ products, bannerData, heroData, categoryData, retailerData, NavData }) => {
+  console.log(NavData)
   return (
     <>
       <Hero heroData={heroData} />
@@ -41,8 +41,12 @@ export const getServerSideProps = async () => {
   const retailerQuery = `*[_type == 'retailer'] {...,"product": *[_type == 'product' && references(^._id)]}`;
   const retailerData = await client.fetch(retailerQuery);
 
+  const NavQuery = `*[_type == "navigation"]`;
+  const NavData = await client.fetch(NavQuery);
+
+
   return {
-    props: { retailerData, heroData, categoryData, products, bannerData }
+    props: { retailerData, heroData, categoryData, products, bannerData, NavData }
     //Passed to top props
   }
 }

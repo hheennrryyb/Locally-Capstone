@@ -9,11 +9,6 @@ function categorySlug({ products, retailerData }) {
     return (
         <div className='mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pt-16 lg:pb-24'>
             <div className="overflow-hidden rounded-lg ">
-                {/* <img
-                    src={urlFor(retailerData.banner)}
-                    //   alt={product.images[0].alt}
-                    className="h-full w-full object-cover object-center"
-                /> */}
                 <div style={{
                     backgroundImage: `url(${urlFor(retailerData.banner)})`, backgroundPosition: 'center',
                     backgroundSize: 'cover',

@@ -5,10 +5,12 @@ import '../styles/globals.css'
 import { StateContext } from '../context/StateContext'
 import { Toaster } from 'react-hot-toast'
 
+
 function MyApp({ Component, pageProps }) {
+
   return (
     <StateContext> {/* passing data from stateContext to all other components */}
-      <Layout>
+      <Layout >
         <Toaster />
         {/* //Layout will access Component through children prop */}
         <Component {...pageProps} />

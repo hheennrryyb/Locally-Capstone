@@ -1,14 +1,18 @@
 import React from 'react'
 import { client } from '../../lib/client'
-import { Retailer } from '../../components'
+import { MakersBio } from '../../components'
 
 function index({ retailerData }) {
     console.log(retailerData)
     return (
         <>
-            <h1>Retailers</h1>
-            <div className='products-container'>
-                {retailerData?.map((retailer) => <Retailer key={retailer._id} retailer={retailer} />)}
+            <div className=''>
+                <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <h1 className="text-2xl font-bold tracking-tight text-gray-900">Makers In British Columbia</h1>
+                    <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                        {retailerData?.map((retailer) => <MakersBio retailerData={retailer} />)}
+                    </div>
+                </div>
             </div>
 
         </>
@@ -16,17 +20,8 @@ function index({ retailerData }) {
 }
 
 export const getServerSideProps = async () => {
-    // Grab all data from the sanity dashboard; 
-    // const query = '* [_type == "product"]';
-    // const products = await client.fetch(query);
 
-    // const bannerQuery = '* [_type == "banner"]';
-    // const bannerData = await client.fetch(bannerQuery);
-
-    // const categoryQuery = '* [_type == "category"]';
-    // const categoryData = await client.fetch(categoryQuery);
-
-    const retailerQuery = '* [_type == "retailer"]';
+    const retailerQuery = `*[_type == 'retailer'] {...,"product": *[_type == 'product' && references(^._id)]}`;
     const retailerData = await client.fetch(retailerQuery);
 
     return {
