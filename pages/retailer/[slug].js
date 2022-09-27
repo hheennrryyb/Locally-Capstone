@@ -7,37 +7,44 @@ function categorySlug({ products, retailerData }) {
     console.log(products)
 
     return (
-        <div className='mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pt-16 lg:pb-24'>
-            <div className="overflow-hidden rounded-lg ">
+        <>
+            <div className=" mt-10 ">
                 <div style={{
                     backgroundImage: `url(${urlFor(retailerData.banner)})`, backgroundPosition: 'center',
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
-                }} className="h-full w-full ">
-                    <div className='bg-gradient-to-r from-blue-500 overflow-hidden rounded-lg h-full w-full p-10'>
-                        <img class="w-52 h-52 object-cover rounded-full" src={urlFor(retailerData.image)} alt="image description"></img>
-                        <div className='ml-5'>
-                            <h2 className='text-4xl font-bold text-white sm:text-4xl'>{retailerData.name}</h2>
-                            <h3 className='text-xl font-light tracking-tight text-white sm:text-xl'>From British Columbia</h3>
-                        </div>
+                }} className="">
+                    <div className='bg-gradient-to-r from-white'>
+                        <div className='lg:max-w-6xl m-auto py-10 flex items-center'>
 
+                            <img class="w-52 h-52 object-cover rounded-full " src={urlFor(retailerData.image)} alt="image description"></img>
+                            <div className='pl-10'>
+                                <h2 className='text-4xl font-bold text-gray-900 sm:text-4xl'>{retailerData.name}</h2>
+                                <h3 className='text-xl font-light tracking-tight text-gray-900 sm:text-xl'>From British Columbia</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div className='mx-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24'>
 
 
-            <div className='p-10'>
-                <h3 className="text-sm font-medium text-gray-900">About Me</h3>
-                <div className="space-y-6">
-                    <p className="text-base text-gray-900">{retailerData.description}</p>
+                <div className='p-10'>
+                    <h3 className="text-sm font-medium text-gray-900">About Me</h3>
+                    <div className="space-y-6">
+                        <p className="text-base text-gray-900">{retailerData.description}</p>
+                    </div>
+
                 </div>
 
+                <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <h2 className="text-2xl font-bold tracking-tight text-gray-900">{retailerData.name}'s  Products</h2>
+                    <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                        {products.product?.map((product) => <Product key={product._id} product={product} retailer={retailerData} />)}
+                    </div>
+                </div>
             </div>
-
-            <div className='products-container'>
-                {products.product?.map((product) => <Product key={product._id} product={product} retailer={retailerData} />)}
-            </div>
-        </div>
+        </>
     )
 }
 

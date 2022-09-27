@@ -20,11 +20,11 @@ import Image from 'next/image'
 import { useStateContext } from '../context/StateContext'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
+import { Bars3Icon, BellIcon, XMarkIcon, ShoppingBagIcon, MagnifyingGlassIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { Search } from './index'
 import { client } from '../lib/client'
+import { useUser } from '@auth0/nextjs-auth0';
 
-import { AiOutlineShopping } from 'react-icons/ai'
 
 import Logo from '../data/logo/Locally.svg'
 // import Logo2 from '../data/logo/Locally.png'
@@ -35,6 +35,7 @@ import { Cart } from './'
 
 function Navbar() {
     const { showCart, setShowCart, totalQuantities } = useStateContext()
+    const { user, isLoading } = useUser();
 
     const navigation = [
         // { name: 'Home', href: '#', current: true },
@@ -137,13 +138,21 @@ function Navbar() {
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                     <Menu as="div" className="relative ml-3">
                                         <div>
-                                            <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                            <Menu.Button className="flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                                 <span className="sr-only">Open user menu</span>
-                                                <img
-                                                    className="h-8 w-8 rounded-full"
-                                                // src=""
-                                                // alt=""
-                                                />
+                                                {user ? (
+                                                    <img
+                                                        className="h-8 w-8 rounded-full"
+                                                        src={user.picture}
+                                                    // alt=""
+                                                    />
+                                                ) :
+                                                    <div className="h-8 w-8 rounded-full">
+                                                        <UserCircleIcon />
+                                                    </div>
+
+
+                                                }
                                             </Menu.Button>
                                         </div>
                                         <Transition
@@ -157,42 +166,55 @@ function Navbar() {
                                         >
                                             <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                 <Menu.Item>
-                                                    {({ active }) => (
+                                                    {user ? (
                                                         <a
-                                                            href="#"
-                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700')}
+                                                            href="/profile"
+                                                            className='block px-4 py-2 text-sm text-black-700'
                                                         >
-                                                            Your Profile
+                                                            {user.name} Account
                                                         </a>
-                                                    )}
-                                                </Menu.Item>
-                                                <Menu.Item>
-                                                    {({ active }) => (
+                                                    ) :
                                                         <a
-                                                            href="#"
-                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700')}
+                                                            href="/api/auth/login"
+                                                            className='block px-4 py-2 text-sm text-black-700'
                                                         >
-                                                            Settings
+                                                            Login
                                                         </a>
-                                                    )}
+
+                                                    }
+
                                                 </Menu.Item>
-                                                <Menu.Item>
-                                                    {({ active }) => (
+                                                {/* <Menu.Item>
+
+                                                    <a
+                                                        href="/profile"
+                                                        className='block px-4 py-2 text-sm text-black-700'
+                                                    >
+                                                        Settings
+                                                    </a>
+
+                                                </Menu.Item> */}
+                                                {user ? (
+                                                    <Menu.Item>
+
                                                         <a
-                                                            href="#"
-                                                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-black-700')}
+                                                            href="/api/auth/logout"
+                                                            className='block px-4 py-2 text-sm text-black-700'
                                                         >
                                                             Sign out
                                                         </a>
-                                                    )}
-                                                </Menu.Item>
+
+                                                    </Menu.Item>
+                                                ) : (<></>)}
+
                                             </Menu.Items>
                                         </Transition>
                                     </Menu>
+                                    <Search />
                                     <div className="ml-4 flow-root lg:ml-6">
                                         <a onClick={() => setShowCart(true)} className="group -m-2 flex items-center p-2">
-                                            <AiOutlineShopping
-                                                className="h-6 w-6 flex-shrink-0 text-black-400 group-hover:text-black-500"
+                                            <ShoppingBagIcon
+                                                className="h-6 w-6 flex-shrink-0 text-black-400 group-hover:text-black-500 hover:text-blue-400"
                                                 aria-hidden="true"
                                             />
                                             <span className="ml-2 text-sm font-medium text-black-700 group-hover:text-black-800">{totalQuantities}</span>

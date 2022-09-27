@@ -5,8 +5,8 @@ import { client } from '../../lib/client'
 function index({ categoryData }) {
     console.log(categoryData)
     return (
-        <div>
-            <div className='mt-6 grid grid-cols-1 gap-y-5 gap-x-2 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8'>
+        <div className='lg:mx-20'>
+            <div className='mt-6 grid grid-cols-1 gap-y-5 gap-x-1 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-10'>
                 {categoryData?.map((category) => <Category categoryData={category} />)}
             </div>
         </div>

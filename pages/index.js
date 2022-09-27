@@ -1,15 +1,18 @@
 import React from 'react'
 import { client } from '../lib/client'
-import { Product, FooterBanner, Banner, Hero, FeaturedMakers } from '../components'
+import { Product, FooterBanner, Banner, Hero, FeaturedMakers, Feature, Promotions } from '../components'
 
 const Home = ({ products, bannerData, heroData, categoryData, retailerData, NavData }) => {
-  console.log(NavData)
+
   return (
     <>
       <Hero heroData={heroData} />
+      <Feature />
 
       {/* <Banner Banner={bannerData.length && bannerData[0]} /> */}
       <FeaturedMakers retailerData={retailerData} />
+
+      <Promotions />
 
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Trending Products</h2>

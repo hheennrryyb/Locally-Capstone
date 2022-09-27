@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
             <header>
                 <Navbar />
             </header>
-            <main className='main-container'>
+            <main className=''>
                 {/* //passing through from _app.js Components */}
                 {children}
             </main>

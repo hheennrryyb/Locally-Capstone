@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import { client } from '../../lib/client'
 import { urlFor } from '../../lib/client'
 import mapStyles from './mapStyles'
 import { MakersBio } from '../../components'
 import Link from 'next/link'
-
+import Image from 'next/image'
 
 function Map({ retailerData }) {
     const [selected, setSelected] = useState(null)
-    console.log(retailerData)
+    // console.log(selected)
+
+    useEffect(() => {
+        console.log("selected", selected)
+        if (selected) {
+            console.log(selected.slug.current)
+        }
+    }, [selected])
     return (
+
         <GoogleMap
             defaultZoom={10}
             defaultCenter={{ lat: 49.2827, lng: -123.1207 }}
@@ -29,16 +37,22 @@ function Map({ retailerData }) {
                 />
             ))}
 
-            {selected && (
+            {selected !== null && (
                 <InfoWindow
                     position={{ lat: selected.location.lat, lng: selected.location.lng }}
                     onCloseClick={() => {
                         setSelected(null)
                     }}
                 >
-                    <div>
-                        {/* <img src={urlFor(selected.image)}></img> */}
-                        <h2>{selected.name}</h2>
+
+                    <div className='w-36 flex items-center flex-col'>
+                        {/* <Link href={`/retailer/${selected.slug.current}`}> */}
+                        <img onClick={() => {
+                            window.location = `/retailer/${selected.slug.current}`;
+                        }} src={urlFor(selected.image)} className='h-32 w-32 object-cover object-center rounded-full' />
+                        {/* </Link> */}
+
+                        <h2 className='text-lg'>{selected.name}</h2>
                         <p>{selected.shortDescription}</p>
                         {/* <MakersBio retailerData={selected} /> */}
                     </div>
@@ -46,6 +60,7 @@ function Map({ retailerData }) {
                 </InfoWindow>
             )}
         </GoogleMap>
+
     )
 }
 

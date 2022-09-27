@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import Link from 'next/link'
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai'
 import { TiDeleteOutline } from 'react-icons/ti'
+import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast'
 
 import { useStateContext } from '../context/StateContext'
@@ -20,19 +21,19 @@ const Cart = () => {
                     className='cart-heading'
                     onClick={() => setShowCart(false)}>
                     <AiOutlineLeft />
-                    <span className='heading'>Your Cart</span>
-                    <span className='cart-num-items'>({totalQuantities} items)</span>
+                    <span className=''>Your Cart</span>
+                    <span className=''>({totalQuantities} items)</span>
                 </button>
 
                 {cartItems.length < 1 && (
                     <div className='empty-cart'>
-                        <AiOutlineShopping size={100} />
+                        <AiOutlineShopping size={5} />
                         <h3>Your shopping bag is empty</h3>
                         <Link href="/">
                             <button
                                 type='button'
                                 onClick={() => setShowCart(false)}
-                                className='btn'>
+                                className='w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '>
                                 Continue Shopping
                             </button>
                         </Link>
@@ -45,17 +46,17 @@ const Cart = () => {
                             <img src={urlFor(item?.image[0])}
                                 className='cart-product-image' />
                             <div className='item-desc'>
-                                <div className='flex top'>
-                                    <h5>{item.name}</h5>
+                                <div className=''>
+                                    <h5 className='text-lg'>{item.name}</h5>
                                     <h4>${item.price}</h4>
                                 </div>
-                                <div className='flex bottom'>
+                                <div className=''>
                                     <div>
-                                        <p className='quantity-desc'>
-                                            <span className='minus' onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></span>
-                                            <span className='num' onClick="">{item.quantity}</span>
-                                            <span className='plus' onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></span>
-                                        </p>
+                                        <div className='inline-flex rounded-md shadow-sm mt-1'>
+                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></div>
+                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick="">{item.quantity}</div>
+                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></div>
+                                        </div>
                                     </div>
                                     <button
                                         type='button'
@@ -79,7 +80,7 @@ const Cart = () => {
                         <div className='btn-container'>
                             <button
                                 type='button'
-                                className='btn'
+                                className='w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 '
                                 onClick="">
                                 Checkout
                             </button>
