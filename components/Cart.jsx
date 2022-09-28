@@ -4,7 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 
 import { TiDeleteOutline } from 'react-icons/ti'
 import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast'
-import './Cart.module.scss'
+
 import { useStateContext } from '../context/StateContext'
 import { urlFor } from '../lib/client'
 import getStripe from '../lib/getStripe'
@@ -34,7 +34,7 @@ const Cart = () => {
     }
 
     return (
-        <div className='cart-wrapper' ref={cartRef}>
+        <div className=' show-top cart-wrapper' ref={cartRef}>
             <div className='cart-container'>
                 <button
                     type='button'

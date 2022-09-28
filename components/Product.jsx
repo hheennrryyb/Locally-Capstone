@@ -8,13 +8,14 @@ const Product = ({ product: { image, name, slug, price, _id, retailer } }) => {
     return (
         <div>
 
-            <div key={_id} className="group relative">
-                <div className="h-56 sm:min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+            <div key={_id} className="group relative ">
+                <div className=" hover:shadow-lg transition duration-300 h-56 sm:min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+
                     <Link href={`/product/${slug.current}`}>
                         <img
                             src={urlFor(image && image[0])}
                             //   alt={product.imageAlt}
-                            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                            className=" h-full w-full object-cover object-center lg:h-full lg:w-full "
                         />
                     </Link>
                 </div>
@@ -41,20 +42,3 @@ const Product = ({ product: { image, name, slug, price, _id, retailer } }) => {
 }
 
 export default Product
-
-
-// {/* <Link href={`/product/${slug.current}`}>
-// <div className='product-card'>
-//     <img
-//         src={urlFor(image && image[0])}
-//         width={250}
-//         height={250}
-//         className="product-image"
-//     />
-//     <p className='product-name'>{name}</p>
-//     <p className='product-price'>${price}</p>
-//     {/* <p>{categories.title}</p> */}
-
-// </div>
-
-// </Link> */}

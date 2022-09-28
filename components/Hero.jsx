@@ -19,8 +19,8 @@ const Hero = ({ heroData }) => {
                                 <div
                                     style={{ backgroundImage: `url(${urlFor(data.image)})` }}>
                                     {/* <span>Slide {index + 1}</span> */}
-                                    <div className='flex flex-col items-center h-full justify-center'>
-                                        <p className='text-3xl lg:text-6xl text-white max-w-3xl text-center'>{data.largeText1}</p>
+                                    <div className='flex flex-col items-center h-full justify-center '>
+                                        <p className='text-3xl lg:text-6xl font-bold text-white max-w-3xl text-center'>{data.largeText1}</p>
                                         <p className='text-md text-white py-3 max-w-sm text-center'>{data.desc}</p>
 
                                         <button type="button" className="w-32 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-xl px-5 py-2.5 text-center mr-2 mb-2 ">{data.buttonText}</button>

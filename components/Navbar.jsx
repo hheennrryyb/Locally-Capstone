@@ -39,7 +39,7 @@ function Navbar() {
         return classes.filter(Boolean).join(' ')
     }
     return (
-        <>
+        <div className='show-top'>
 
             <Disclosure as="nav" className="bg-white">
                 {({ open }) => (
@@ -243,8 +243,21 @@ function Navbar() {
                 )}
             </Disclosure>
 
-            {showCart && <Cart />}
-        </>
+
+            <Transition
+                show={showCart}
+                className='cart-wrapper'
+
+                enter='transform transition ease-in-out duration-500 sm:duration-700 z-50'
+                enterFrom='translate-x-full z-50'
+                enterTo='translate-x-0 z-50'
+                leave='transform transition ease-in-out duration-500 sm:duration-700 z-50'
+                leaveFrom='translate-x-0 z-50'
+                leaveTo='translate-x-full z-50'
+            >
+                {showCart && <Cart />}
+            </Transition>
+        </div >
     )
 }
 

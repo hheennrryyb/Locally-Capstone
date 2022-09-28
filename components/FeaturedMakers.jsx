@@ -28,7 +28,7 @@ function FeaturedMakers({ retailerData }) {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 1,
-                    centerPadding: "20%",
+                    centerPadding: "8%",
                 }
             }
         ]
