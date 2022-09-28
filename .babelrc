@@ -1,5 +1,6 @@
 {
     "presets": [
+        // "next"
         "next/babel"
         // "@babel/preset-react"
     ]
