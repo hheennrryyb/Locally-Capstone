@@ -1,0 +1,40 @@
+.container {
+    // position: fixed;
+    // display: table;
+    // height: 100%;
+    // width: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    z-index: 1;
+
+    &-animate {
+        z-index: 0;
+        transform: scale(1);
+
+        .modal-background {
+            background: rgba(0, 0, 0, .6);
+
+            .modal {
+                animation: moveUp .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+            }
+        }
+
+        +.content {
+            z-index: 1;
+            animation: slideUpLarge .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+
+        &.out {
+            .modal-background {
+                .modal {
+                    animation: moveDown .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+                }
+            }
+
+            +.content {
+                animation: slideDownLarge .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+            }
+        }
+    }
+}

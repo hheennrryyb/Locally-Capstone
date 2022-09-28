@@ -4,14 +4,34 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 
 import { TiDeleteOutline } from 'react-icons/ti'
 import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast'
-
+import './Cart.module.scss'
 import { useStateContext } from '../context/StateContext'
 import { urlFor } from '../lib/client'
+import getStripe from '../lib/getStripe'
+
 
 const Cart = () => {
     const cartRef = useRef();
     const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
 
+    const handleCheckout = async () => {
+        const stripe = await getStripe();
+
+        const response = await fetch('/api/stripe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cartItems)
+        })
+        if (response.statusCode === 500) return;
+
+        const data = await response.json();
+
+        toast.loading('Redirecting...')
+
+        stripe.redirectToCheckout({ sessionId: data.id })
+    }
 
     return (
         <div className='cart-wrapper' ref={cartRef}>
@@ -81,7 +101,7 @@ const Cart = () => {
                             <button
                                 type='button'
                                 className='w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 '
-                                onClick="">
+                                onClick={handleCheckout}>
                                 Checkout
                             </button>
 
