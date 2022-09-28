@@ -43,10 +43,10 @@ a {
 }
 
 .marquee-text {
-  font-size: 29px;
+  /* font-size: 29px;
   font-weight: 600;
   margin: 60px 0px;
-  color: #f02d34;
+  color: #f02d34; */
 }
 
 .marquee {
@@ -628,18 +628,6 @@ span.text-red {
 .quantity-desc .plus {
   color: rgb(49, 168, 49);
 
-}
-
-.maylike-products-wrapper {
-  margin-top: 120px;
-}
-
-.maylike-products-wrapper h2 {
-  text-align: center;
-  margin: 50px;
-  color: #324d67;
-
-  font-size: 28px;
 }
 
 .maylike-products-container {

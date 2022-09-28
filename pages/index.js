@@ -1,27 +1,40 @@
 import React from 'react'
 import { client } from '../lib/client'
-import { Product, FooterBanner, Banner, Hero, FeaturedMakers, Feature, Promotions } from '../components'
+import { Product, FooterBanner, Banner, Hero, FeaturedMakers, Feature, Promotions, Category, AboutFeature } from '../components'
 
 const Home = ({ products, bannerData, heroData, categoryData, retailerData, NavData }) => {
 
   return (
     <>
-      <Hero heroData={heroData} />
       <Feature />
+      <div className="mx-auto max-w-2xl px-4 pt-10 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Featured Products</h2>
+        <div className="mt-6 grid grid-cols-1 gap-y-5 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {products?.slice(0, 4).map((product) => <Product key={product._id} product={product} />)}
+        </div>
+      </div>
+      <FeaturedMakers retailerData={retailerData} />
+      <Hero heroData={heroData} />
 
       {/* <Banner Banner={bannerData.length && bannerData[0]} /> */}
-      <FeaturedMakers retailerData={retailerData} />
 
-      <Promotions />
 
-      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl py-10 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Trending Products</h2>
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products?.map((product) => <Product key={product._id} product={product} />)}
         </div>
       </div>
 
+      <Promotions />
+      <div className='mx-auto max-w-2xl  px-4  sm:px-6 lg:max-w-7xl lg:px-8'>
+        <div className='mt-6 grid grid-cols-1 gap-y-5 gap-x-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10'>
+          {categoryData?.map((category) => <Category key={category._id} categoryData={category} />)}
+        </div>
+      </div>
+
       {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
+      <AboutFeature />
     </>
   )
 }

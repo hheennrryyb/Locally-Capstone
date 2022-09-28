@@ -6,14 +6,14 @@ import Footer from './Footer'
 
 const Layout = ({ children }) => {
     return (
-        <div className=''>
+        <div >
             <Head>
                 <title>Locally</title>
             </Head>
             <header>
                 <Navbar />
             </header>
-            <main className=''>
+            <main >
                 {/* //passing through from _app.js Components */}
                 {children}
             </main>

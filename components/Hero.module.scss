@@ -4,25 +4,27 @@
 
     list-style: none;
     padding: 0;
+
 }
 
 .slide>div {
-    display: block;
-    padding-top: 17%;
-    padding-left: 10%;
+    // display: block;
+    // padding-top: 17%;
+    // padding-left: 10%;
     // align-items: center;
     // justify-content: center;
+    padding: 0 4rem;
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    height: 40rem;
+    height: 25rem;
 }
 
-.slide span {
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 20px;
-    color: white;
-    background: rgba(141, 174, 224, 0.5);
-    text-align: center;
-}
+// .slide span {
+//     padding: 10px;
+//     border-radius: 5px;
+//     font-size: 20px;
+//     color: white;
+//     background: rgba(141, 174, 224, 0.5);
+//     text-align: center;
+// }

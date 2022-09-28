@@ -9,14 +9,14 @@ import Image from 'next/image'
 
 function Map({ retailerData }) {
     const [selected, setSelected] = useState(null)
-    // console.log(selected)
 
-    useEffect(() => {
-        console.log("selected", selected)
-        if (selected) {
-            console.log(selected.slug.current)
-        }
-    }, [selected])
+    // useEffect(() => {
+    //     console.log("selected", selected)
+    //     if (selected) {
+    //         console.log(selected.slug.current)
+    //     }
+    // }, [selected])
+
     return (
 
         <GoogleMap
@@ -68,10 +68,9 @@ function Map({ retailerData }) {
 const WrappedMap = withScriptjs(withGoogleMap(({ retailerData }) => <Map retailerData={retailerData} />))
 
 export default function index({ retailerData }) {
-    // console.log(retailerData)
 
     return (
-        <div style={{ width: '1200px', height: '800px' }} className="m-auto">
+        <div style={{ width: 'auto', height: '800px' }} className="m-auto">
             <WrappedMap
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}`}
                 loadingElement={<div style={{ height: "100%" }} />}

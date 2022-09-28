@@ -3,8 +3,7 @@ import { client, urlFor } from '../../lib/client'
 import { Product } from '../../components'
 
 function categorySlug({ products, categoryData }) {
-    console.log(categoryData)
-    // console.log(products.product)
+
     return (
         <div className='mt-5'>
             <div style={{

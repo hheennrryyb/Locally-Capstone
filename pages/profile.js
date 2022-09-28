@@ -5,7 +5,7 @@ import { urlFor } from '../lib/client'
 
 export default function Profile({ products }) {
     const { user, error, isLoading } = useUser();
-    console.log(products)
+
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>{error.message}</div>;
 

@@ -1,11 +1,12 @@
 import React from 'react'
+import toast from 'react-hot-toast'
 
 function Promotions() {
     return (
-        <div className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-3xl md:px-24 lg:px-32 lg:py-10">
+        <div className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-7xl md:px-24 lg:px-32 ">
             <div className="grid max-w-screen-xl gap-8 row-gap-6 sm:mx-auto lg:grid-cols-2">
 
-                <div className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md">
+                <div onClick={() => toast.success('Code "Summer" For 20% OFF As Been Applied To Your Cart! ')} className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md">
                     <div className="pr-4">
                         <h6 className="mb-2 font-semibold leading-5">
                             Use Code "Summer" For
@@ -28,7 +29,7 @@ function Promotions() {
                     </div>
                 </div>
 
-                <div className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md">
+                <div onClick={() => toast.success('$5 OFF As Been Applied To Your Cart! ')} className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md">
                     <div className="pr-4">
                         <h6 className="mb-2 font-semibold leading-5">
                             First Time Customers

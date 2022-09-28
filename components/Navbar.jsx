@@ -1,19 +1,3 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -26,10 +10,8 @@ import { client } from '../lib/client'
 import { useUser } from '@auth0/nextjs-auth0';
 
 
-import Logo from '../data/logo/Locally.svg'
+import Logo from '../data/logo/Locally.png';
 // import Logo2 from '../data/logo/Locally.png'
-
-
 
 import { Cart } from './'
 
@@ -41,7 +23,7 @@ function Navbar() {
         // { name: 'Home', href: '#', current: true },
         { name: 'Makers', href: '/retailer', current: false },
         { name: 'Maps', href: '/maps', current: false },
-        { name: 'About', href: '#', current: false },
+        { name: 'About', href: '/about', current: false },
     ]
     const categoryLinks = [
         { href: '/category', label: 'All Collections' },
@@ -63,22 +45,22 @@ function Navbar() {
                 {({ open }) => (
                     <>
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                            <div className="relative flex h-16 items-center justify-between">
+                            <div className="relative flex h-20 items-center justify-between">
                                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                     {/* Mobile menu button*/}
                                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-black-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                         <span className="sr-only">Open main menu</span>
                                         {open ? (
-                                            <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                            <XMarkIcon className="block h-6 w-6" />
                                         ) : (
-                                            <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                            <Bars3Icon className="block h-6 w-6" />
                                         )}
                                     </Disclosure.Button>
                                 </div>
-                                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                                <div className="ml-16 sm:ml-0 flex items-center justify-center sm:items-stretch sm:justify-start">
                                     <div className="flex flex-shrink-0 items-center">
                                         <Link href='/'>
-                                            <div className="block w-28 lg:hidden">
+                                            <div className="block w-40 lg:hidden">
                                                 <Image
                                                     // height={50}
                                                     src={Logo}
@@ -97,7 +79,7 @@ function Navbar() {
                                             </div>
                                         </Link>
                                     </div>
-                                    <div className="hidden sm:ml-6 sm:block lg:mt-2">
+                                    <div className="hidden md:mt-2 sm:ml-6 sm:block lg:mt-2">
                                         <div className="flex space-x-4">
 
                                             <Menu>
@@ -127,7 +109,7 @@ function Navbar() {
                                                         item.current ? 'bg-gray-900 text-white' : 'text-black-300 hover:bg-gray-700 hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium'
                                                     )}
-                                                    aria-current={item.current ? 'page' : undefined}
+
                                                 >
                                                     {item.name}
                                                 </a>
@@ -215,7 +197,6 @@ function Navbar() {
                                         <a onClick={() => setShowCart(true)} className="group -m-2 flex items-center p-2">
                                             <ShoppingBagIcon
                                                 className="h-6 w-6 flex-shrink-0 text-black-400 group-hover:text-black-500 hover:text-blue-400"
-                                                aria-hidden="true"
                                             />
                                             <span className="ml-2 text-sm font-medium text-black-700 group-hover:text-black-800">{totalQuantities}</span>
                                             <span className="sr-only">items in cart, view bag</span>
@@ -228,7 +209,7 @@ function Navbar() {
                             </div>
                         </div>
 
-                        <Disclosure.Panel className="sm:hidden">
+                        <Disclosure.Panel className="sm:hidden shadow-lg">
                             <div className="space-y-1 px-2 pt-2 pb-3">
                                 {navigation.map((item) => (
                                     <Disclosure.Button
@@ -239,9 +220,21 @@ function Navbar() {
                                             item.current ? 'bg-gray-900 text-white' : 'text-black-300 hover:bg-gray-700 hover:text-white',
                                             'block px-3 py-2 rounded-md text-base font-medium'
                                         )}
-                                        aria-current={item.current ? 'page' : undefined}
+
                                     >
                                         {item.name}
+                                    </Disclosure.Button>
+                                ))}
+                                <div className='border'></div>
+                                {categoryLinks.map((item) => (
+                                    <Disclosure.Button
+                                        key={item.label}
+                                        as="a"
+                                        href={item.href}
+                                        className='text-black block px-3 py-2 rounded-md text-base font-medium'
+
+                                    >
+                                        {item.label}
                                     </Disclosure.Button>
                                 ))}
                             </div>

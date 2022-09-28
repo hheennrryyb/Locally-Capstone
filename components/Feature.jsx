@@ -1,9 +1,10 @@
 import React from 'react'
+import { SearchBar } from './index'
 
 function Feature() {
     return (
 
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-12 lg:py-12">
+        <div className="px-4 pt-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-12 ">
             <div className="max-w-3xl mb-10 sm:mx-auto">
                 <h2 className="font-sans text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-4xl sm:text-center">
                     Locally is revolutionizing how consumers shop & discover{' '}
@@ -91,6 +92,9 @@ function Feature() {
                         </p>
                     </div>
                 </div>
+            </div>
+            <div className='mt-8'>
+                <SearchBar />
             </div>
         </div>
     );
