@@ -61,7 +61,7 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
 
                 <div className='sm:hidden mx-5 mb-4 mt-4'>
                     <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{name}</h1>
-                    <div className='flex flex-wrap justify-between '>
+                    <div className='block sm:flex flex-wrap justify-between '>
                         <div className='flex align-middle '>
                             <div className='flex pt-1 pr-1'>
                                 <AiFillStar />
@@ -73,7 +73,7 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                             <p>(20)</p>
                         </div>
                         <div>
-                            <h3 className="text-base font-light text-gray-900 inline">Marker: </h3>
+                            <h3 className="text-base font-light text-gray-900 inline">Maker: </h3>
                             <Link href={`/retailer/${retailerData.retailer.slug.current}`}><a className='text-base font-bold text-gray-900 inline'>{retailerData.retailer.name}</a></Link>
                         </div>
                         <div>
@@ -153,7 +153,7 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                                     <div className='py-2 px-4 text-base font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' >{qty}</div>
                                     <div className='py-2 px-4 text-lg font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' onClick={incQty}><AiOutlinePlus /></div>
                                 </div>
-                                <span className=' block w-32 bg-red-100 text-red-800 text-xs font-semibold mr-2 px-1 py-0.5 rounded'>Only <span className=''>14</span> Units Left!</span>
+                                <span className=' block w-32 bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2 py-0.5 rounded'>Only <span className=''>14</span> Units Left!</span>
                             </div>
                         </div>
 

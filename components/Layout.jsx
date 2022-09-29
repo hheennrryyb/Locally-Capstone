@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
         <div >
             <Head>
                 <title>Locally</title>
+                {/* <link rel="shortcut icon" href="./favicon.ico" /> */}
             </Head>
             <header>
                 <Navbar />
