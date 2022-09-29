@@ -1,9 +1,110 @@
 import React from 'react'
 import { AboutFeature } from '../components'
+import Slider from "react-slick";
+import Image from 'next/image';
+import slide1 from '../data/slides/1.png'
+import slide2 from '../data/slides/2.png'
+import slide3 from '../data/slides/3.png'
+import slide4 from '../data/slides/4.png'
+import slide5 from '../data/slides/5.png'
+import slide6 from '../data/slides/6.png'
+import slide7 from '../data/slides/7.png'
+import henry from '../data/henry2.JPG'
+import Link from 'next/link';
+
 
 function about() {
+
+    const settings = {
+        dots: true,
+        fade: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
     return (
-        <div>
+        <div className=''>
+            <div className='bg-gray-900 px-10 py-20'>
+                <Slider {...settings} className='m-auto '>
+                    <div>
+                        <Image src={slide1} />
+                    </div>
+                    <div>
+                        <Image src={slide2} />
+                    </div>
+                    <div>
+                        <Image src={slide3} />
+                    </div>
+                    <div>
+                        <Image src={slide4} />
+                    </div>
+                    <div>
+                        <Image src={slide5} />
+                    </div>
+                    <div>
+                        <Image src={slide6} />
+                    </div>
+                    <div>
+                        <Image src={slide7} />
+                    </div>
+                </Slider>
+            </div>
+            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-4xl md:px-24 lg:px-0 lg:py-15">
+                <div className="flex flex-col max-w-screen-xl overflow-hidden bg-white rounded shadow-sm lg:flex-row sm:mx-auto">
+                    <div className="relative lg:w-1/2 ">
+                        <Image
+                            src={henry}
+                            alt=""
+                            className="object-cover	 w-full lg:absolute h-80 lg:h-full"
+                        />
+                        <svg
+                            className="absolute top-0 right-0 hidden h-full text-white lg:inline-block"
+                            viewBox="0 0 20 104"
+                            fill="currentColor"
+                        >
+                            <polygon points="17.3036738 5.68434189e-14 20 5.68434189e-14 20 104 0.824555778 104" />
+                        </svg>
+                    </div>
+                    <div className="flex flex-col justify-center p-8 bg-white lg:p-4 lg:pl-10 lg:w-1/2">
+                        <div>
+                            <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                                About The Creator Of Locally
+                            </p>
+                        </div>
+                        <h5 className="mb-3 text-3xl font-extrabold leading-none sm:text-4xl">
+                            Web Developer & Brain Station TA
+                        </h5>
+                        <p className="mb-5 text-gray-800">
+                            I am an ambitious person who is devoted to develop aesthetically pleasing websites and has taken a vow to eradicate all dysfunctional ones. I am passionate and goal orientated and a high-spirited individual that always finds a way to lift team spirit. I find great fulfillment in building visually stunning and elaborate web apps by exploring the nuances of the problem.
+                            <span className="font-bold"> Connect with me on LinkedIn!</span>
+                        </p>
+                        <div className="flex items-center">
+                            <Link href="https://www.linkedin.com/in/henry-bellman/"><button
+
+                                className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-sky-500 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                            >
+                                LinkedIn
+                            </button></Link>
+                            {/* <a
+                                href="/"
+                                aria-label=""
+                                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                            >
+                                GitHub
+                                <svg
+                                    className="inline-block w-3 ml-2"
+                                    fill="currentColor"
+                                    viewBox="0 0 12 12"
+                                >
+                                    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+                                </svg>
+                            </a> */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <AboutFeature />
             <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-5xl lg:px-8 mb-20">
                 <h5 className="mb-4 mt-8 text-4xl font-extrabold leading-none"> Whats Locally? </h5>

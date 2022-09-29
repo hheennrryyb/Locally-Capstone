@@ -111,7 +111,7 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                             <h3 className="text-base font-medium text-gray-900">Description</h3>
 
                             <div className="space-y-6">
-                                <p className="text-base sm:text-sm text-gray-900">{details}</p>
+                                <p className="text-base sm:text-sm text-gray-900 font-normal">{details}</p>
                             </div>
                         </div>
                         <div className="mt-5">

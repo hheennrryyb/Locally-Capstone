@@ -37,7 +37,7 @@ const Footer = () => {
                     <div className="mb-6 md:mb-0">
 
                         <Link href="/">
-                            <div className=" m-auto w-36 lg:block md:w-48 pr-8">
+                            <div className=" m-auto w-36 lg:block md:w-48 sm:pr-8">
                                 <Image
                                     // height={50}
                                     src={LogoWhite}
