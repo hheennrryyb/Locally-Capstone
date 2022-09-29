@@ -42,22 +42,46 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                             </div>
                         </div>
                         {image[3] &&
-                            <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
+                            <div className="hidden sm:block pt-5 aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
                                 <img
                                     src={urlFor(image[3])}
                                     //   alt={product.images[3].alt}
-                                    className="h-full w-full object-cover object-center"
+                                    className="h-full w-full object-cover object-center rounded-lg"
                                 />
                             </div>
                         }
                     </div>
                 </div>
 
-                <div className="flex flex-col mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-16">
+                <div className='sm:hidden mx-5 mb-4 mt-4'>
+                    <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{name}</h1>
+                    <div className='flex flex-wrap justify-between '>
+                        <div className='flex align-middle '>
+                            <div className='flex pt-1 pr-1'>
+                                <AiFillStar />
+                                <AiFillStar />
+                                <AiFillStar />
+                                <AiFillStar />
+                                <AiOutlineStar />
+                            </div>
+                            <p>(20)</p>
+                        </div>
+                        <div>
+                            <h3 className="text-base font-light text-gray-900 inline">Marker: </h3>
+                            <Link href={`/retailer/${retailerData.retailer.slug.current}`}><a className='text-base font-bold text-gray-900 inline'>{retailerData.retailer.name}</a></Link>
+                        </div>
+                        <div>
+                            <h3 className="text-base font-light text-gray-900 inline">Category: </h3>
+                            <Link href={`/category/${categoryData.categories.slug.current}`}><a className='text-base font-bold text-gray-900 inline'>{categoryData.categories.title}</a></Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col mx-auto max-w-2xl px-4 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-16">
                     <div className="md:order-1 order-2 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                         {/* Title & Description and details */}
-                        <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{name}</h1>
-                        <div className='flex flex-wrap justify-between '>
+                        <h1 className="hidden sm:block text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{name}</h1>
+                        <div className='sm:flex flex-wrap justify-between hidden '>
                             <div className='flex align-middle '>
                                 <div className='flex pt-1 pr-1'>
                                     <AiFillStar />
@@ -81,7 +105,7 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                             <h3 className="text-base font-medium text-gray-900">Description</h3>
 
                             <div className="space-y-6">
-                                <p className="text-sm text-gray-900">{details}</p>
+                                <p className="text-base sm:text-sm text-gray-900">{details}</p>
                             </div>
                         </div>
                         <div className="mt-5">
@@ -111,21 +135,27 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                     </div>
 
                     <div className='md:order-2 order-1'>
-                        <p className='text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl'>${price}</p>
-                        <h3 className='text-base font-medium text-gray-900 mt-4'>Quantity:</h3>
+                        <div className='flex flex-wrap justify-between items-center  sm:block'>
+                            <div>
+                                <p className='text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl'>${price}</p>
+                            </div>
+                            <div>
+                                <h3 className='text-base font-medium text-gray-900 sm:mt-4'>Quantity:</h3>
 
-                        <div className="inline-flex rounded-md shadow-sm mt-1">
-                            <div className='py-2 px-4 text-lg font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick={decQty}><AiOutlineMinus /></div>
-                            <div className='py-2 px-4 text-base font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' >{qty}</div>
-                            <div className='py-2 px-4 text-lg font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick={incQty}><AiOutlinePlus /></div>
+                                <div className="inline-flex rounded-md shadow-sm mt-1">
+                                    <div className='py-2 px-4 text-lg font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' onClick={decQty}><AiOutlineMinus /></div>
+                                    <div className='py-2 px-4 text-base font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' >{qty}</div>
+                                    <div className='py-2 px-4 text-lg font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' onClick={incQty}><AiOutlinePlus /></div>
+                                </div>
+                                <span className=' block w-32 bg-red-100 text-red-800 text-xs font-semibold mr-2 px-1 py-0.5 rounded'>Only <span className=''>14</span> Units Left!</span>
+                            </div>
                         </div>
-                        <span className=' block w-32 bg-red-100 text-red-800 text-xs font-semibold mr-2 px-1 py-0.5 rounded'>Only <span className=''>14</span> Units Left!</span>
 
                         <div className='mt-5 flex flex-wrap '>
                             <div className='w-full'>
-                                <button type='button' className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2.5 text-center mr-5 mb-2' onClick={() => onAdd(product, qty)}> Add to Cart</button>
+                                <button type='button' className='text-white bg-gradient-to-r from-sky-500 via-sky-600 to-sky-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-sky-300 dark:focus:ring-sky-800 font-medium rounded-lg text-base px-5 py-2.5 text-center mr-5 mb-2' onClick={() => onAdd(product, qty)}> Add to Cart</button>
                                 {/* <button type='button' className='buy-now' onClick=""></button> */}
-                                <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2.5 text-center mr-5 mb-2">
+                                <button className="text-white bg-gradient-to-r from-sky-500 via-sky-600 to-sky-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-sky-300 dark:focus:ring-sky-800 font-medium rounded-lg text-base px-5 py-2.5 text-center mr-5 mb-2">
                                     {/* <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"> */}
                                     Buy Now
                                     {/* </span> */}

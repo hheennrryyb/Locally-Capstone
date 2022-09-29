@@ -23,7 +23,7 @@ const Hero = ({ heroData }) => {
                                         <p className='text-3xl lg:text-6xl font-bold text-white max-w-3xl text-center'>{data.largeText1}</p>
                                         <p className='text-md text-white py-3 max-w-sm text-center'>{data.desc}</p>
 
-                                        <button type="button" className="w-32 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-xl px-5 py-2.5 text-center mr-2 mb-2 ">{data.buttonText}</button>
+                                        <button type="button" className="w-32 text-white bg-sky-500 hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-sky-300 font-medium rounded-md text-xl px-5 py-2.5 text-center mr-2 mb-2 ">{data.buttonText}</button>
                                     </div>
                                 </div>
                             </div>

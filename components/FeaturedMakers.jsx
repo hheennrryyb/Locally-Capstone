@@ -43,7 +43,7 @@ function FeaturedMakers({ retailerData }) {
                 <div className='mb-10 overflow-hidden'>
                     {/* <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8"> */}
                     <Slider {...settings}>
-                        {retailerData?.map((retailer) => <MakersBio key={retailer._id} retailerData={retailer} />)}
+                        {retailerData?.slice(1, 6).map((retailer) => <MakersBio key={retailer._id} retailerData={retailer} />)}
                     </Slider>
                     {/* </div> */}
                 </div>

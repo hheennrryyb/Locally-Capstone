@@ -196,7 +196,7 @@ function Navbar() {
                                     <div className="ml-4 flow-root lg:ml-6">
                                         <a onClick={() => setShowCart(true)} className="group -m-2 flex items-center p-2">
                                             <ShoppingBagIcon
-                                                className="h-6 w-6 flex-shrink-0 text-black-400 group-hover:text-black-500 hover:text-blue-400"
+                                                className="h-6 w-6 flex-shrink-0 text-black-400 group-hover:text-black-500 hover:text-sky-400"
                                             />
                                             <span className="ml-2 text-sm font-medium text-black-700 group-hover:text-black-800">{totalQuantities}</span>
                                             <span className="sr-only">items in cart, view bag</span>

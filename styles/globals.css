@@ -92,7 +92,6 @@ a {
 
 .cart-container {
   height: 100vh;
-  width: 600px;
   background-color: white;
   float: right;
   padding: 40px 10px;
@@ -142,6 +141,7 @@ a {
 
 .product {
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   padding: 20px;
 }
@@ -162,7 +162,7 @@ a {
 }
 
 .remove-item {
-  font-size: 24px;
+  /* font-size: 24px; */
   color: #f02d34;
   cursor: pointer;
   background: transparent;
@@ -172,7 +172,7 @@ a {
 .cart-bottom {
   position: absolute;
   bottom: 12px;
-  right: 5px;
+  /* right: 5px; */
   width: 100%;
   padding: 30px 65px;
 

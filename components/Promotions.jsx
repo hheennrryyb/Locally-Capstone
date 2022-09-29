@@ -6,12 +6,12 @@ function Promotions() {
         <div className="px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-7xl md:px-24 lg:px-32 ">
             <div className="grid max-w-screen-xl gap-8 row-gap-6 sm:mx-auto lg:grid-cols-2">
 
-                <div onClick={() => toast.success('Code "Summer" For 20% OFF As Been Applied To Your Cart! ')} className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md hover:bg-blue-200 transition duration-500 hover:scale-105">
+                <div onClick={() => toast.success('Code "Summer" For 20% OFF As Been Applied To Your Cart! ')} className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md hover:bg-sky-200 transition duration-500 hover:scale-105">
                     <div className="pr-4">
                         <h6 className="mb-2 font-semibold leading-5">
                             Use Code "Summer" For
                         </h6>
-                        <h3 className='text-5xl font-bold text-blue-500 tracking-wider'>
+                        <h3 className='text-5xl font-bold text-sky-500 tracking-wider'>
                             20% OFF
                         </h3>
                         <p className="text-sm text-gray-900">
@@ -29,12 +29,12 @@ function Promotions() {
                     </div>
                 </div>
 
-                <div onClick={() => toast.success('$5 OFF As Been Applied To Your Cart! ')} className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md hover:bg-blue-200 transition duration-500 hover:scale-105">
+                <div onClick={() => toast.success('$5 OFF As Been Applied To Your Cart! ')} className="relative flex items-center justify-between p-8 bg-white rounded-md shadow-md hover:bg-sky-200 transition duration-500 hover:scale-105">
                     <div className="pr-4">
                         <h6 className="mb-2 font-semibold leading-5">
                             First Time Customers
                         </h6>
-                        <h3 className='text-5xl font-bold text-blue-500 tracking-wider '>
+                        <h3 className='text-5xl font-bold text-sky-500 tracking-wider '>
                             $5 OFF
                         </h3>
                         <p className="text-sm text-gray-900">

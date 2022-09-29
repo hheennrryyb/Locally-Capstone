@@ -63,7 +63,7 @@ function MakersBio({ retailerData }) {
                         <div></div>
                     </Slider>
                 </div>
-                <Link href={`/retailer/${retailerData.slug.current}`}><button className=" w-full mt-5 md:mt-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">{retailerData.name}'s Store Front</button></Link>
+                <Link href={`/retailer/${retailerData.slug.current}`}><button className=" w-full mt-5 md:mt-0 text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5">{retailerData.name}'s Store Front</button></Link>
             </div>
 
         </div>

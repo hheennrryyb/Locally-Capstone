@@ -53,7 +53,7 @@ const Cart = () => {
                             <button
                                 type='button'
                                 onClick={() => setShowCart(false)}
-                                className='w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '>
+                                className='w-full mt-5 text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '>
                                 Continue Shopping
                             </button>
                         </Link>
@@ -67,23 +67,23 @@ const Cart = () => {
                                 className='cart-product-image' />
                             <div className='item-desc'>
                                 <div className=''>
-                                    <h5 className='text-lg'>{item.name}</h5>
+                                    <h5 className='text-lg max-w-lg'>{item.name}</h5>
                                     <h4>${item.price}</h4>
                                 </div>
                                 <div className=''>
-                                    <div>
+                                    <div className=''>
                                         <div className='inline-flex rounded-md shadow-sm mt-1'>
-                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></div>
-                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick="">{item.quantity}</div>
-                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ' onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></div>
+                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></div>
+                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' onClick="">{item.quantity}</div>
+                                            <div className='py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-sky-500 focus:text-sky-500 ' onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></div>
                                         </div>
+                                        <button
+                                            type='button'
+                                            className='remove-item text-4xl md:text-3xl ml-10'
+                                            onClick={() => onRemove(item)}>
+                                            <TiDeleteOutline />
+                                        </button>
                                     </div>
-                                    <button
-                                        type='button'
-                                        className='remove-item'
-                                        onClick={() => onRemove(item)}>
-                                        <TiDeleteOutline />
-                                    </button>
 
                                 </div>
                             </div>
@@ -92,15 +92,15 @@ const Cart = () => {
 
                 </div>
                 {cartItems.length >= 1 && (
-                    <div className='cart-bottom'>
-                        <div className='total'>
-                            <h3>Subtotal:</h3>
-                            <h3>${totalPrice}</h3>
+                    <div className='cart-bottom bg-slate-100'>
+                        <div className='flex justify-between'>
+                            <h3 className='text-xl'>Subtotal:</h3>
+                            <h3 className='text-xl'>${totalPrice}</h3>
                         </div>
                         <div className='btn-container'>
                             <button
                                 type='button'
-                                className='w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 '
+                                className='w-full mt-5 text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 '
                                 onClick={handleCheckout}>
                                 Checkout
                             </button>

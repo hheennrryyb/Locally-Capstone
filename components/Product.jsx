@@ -33,7 +33,7 @@ const Product = ({ product: { image, name, slug, price, _id, retailer } }) => {
                             <p className="mt-1 text-sm text-gray-500">By: {retailer.name}</p>
                         }
                     </div>
-                    <p className="text-sm font-medium text-gray-900 ml-10">${price}</p>
+                    <p className=" text-base sm:text-sm font-medium text-gray-900 ml-10">${price}</p>
                 </div>
             </div>
 

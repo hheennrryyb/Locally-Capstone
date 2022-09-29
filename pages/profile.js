@@ -33,7 +33,7 @@ export default function Profile({ products }) {
                                     <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg ">
                                         <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
                                         <span className="flex-1 ml-3 whitespace-nowrap">Orders</span>
-                                        <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full ">2</span>
+                                        <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-sky-600 bg-sky-200 rounded-full ">2</span>
                                     </a>
                                 </li>
                                 <li>
@@ -67,7 +67,7 @@ export default function Profile({ products }) {
                         <div className='ml-5'>
                             <h2>{user.name}</h2>
                             <p>{user.email}</p>
-                            <button className=' h-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '>Edit Account</button>
+                            <button className=' h-10 text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '>Edit Account</button>
                         </div>
                     </div>
 

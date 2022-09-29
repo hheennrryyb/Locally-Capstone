@@ -14,7 +14,7 @@ function AboutFeature() {
                         Whats Locally?
                         <br className="hidden md:block" />
                         And Whats Our Mission?
-                        <span className="inline-block text-blue-500">
+                        <span className="inline-block text-sky-500">
                             To Empower Makers & Grow Communities
                         </span>
                     </h5>
@@ -24,7 +24,7 @@ function AboutFeature() {
 
                     </p>
                     <hr className="mb-5 border-gray-300" />
-                    <Link href='/about'><button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">More About Locally</button></Link>
+                    <Link href='/about'><button type="button" className="text-white bg-sky-500 hover:bg-sky-800 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">More About Locally</button></Link>
                 </div>
                 <div>
 
