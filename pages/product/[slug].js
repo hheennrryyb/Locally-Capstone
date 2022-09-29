@@ -18,28 +18,34 @@ const ProductDetails = ({ product, products, categoryData, retailerData }) => {
                 {/* Image gallery */}
                 <div className=''>
                     <div className="mx-auto max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-                        <div className=" aspect-w-3 aspect-h-4 overflow-hidden rounded-lg lg:block">
-                            <img
-                                src={urlFor(image[0])}
-                                //   alt={product.images[0].alt}
-                                className="h-full w-full object-cover object-center"
-                            />
-                        </div>
+                        {image[0] &&
+                            <div className=" aspect-w-3 aspect-h-4 overflow-hidden rounded-lg lg:block">
+                                <img
+                                    src={urlFor(image[0])}
+                                    //   alt={product.images[0].alt}
+                                    className="h-full w-full object-cover object-center"
+                                />
+                            </div>
+                        }
                         <div className="pt-5 lg:grid lg:grid-cols-1 lg:gap-y-8">
-                            <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                                <img
-                                    src={urlFor(image[1])}
-                                    // alt={product.images[1].alt}
-                                    className="max-h-60 w-full object-cover object-center rounded-lg"
-                                />
-                            </div>
-                            <div className="pt-5 aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                                <img
-                                    src={urlFor(image[2])}
-                                    // alt={product.images[2].alt}
-                                    className="max-h-80 w-full object-cover object-center rounded-lg"
-                                />
-                            </div>
+                            {image[1] &&
+                                <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+                                    <img
+                                        src={urlFor(image[1])}
+                                        // alt={product.images[1].alt}
+                                        className="max-h-60 w-full object-cover object-center rounded-lg"
+                                    />
+                                </div>
+                            }
+                            {image[2] &&
+                                <div className="pt-5 aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+                                    <img
+                                        src={urlFor(image[2])}
+                                        // alt={product.images[2].alt}
+                                        className="max-h-80 w-full object-cover object-center rounded-lg"
+                                    />
+                                </div>
+                            }
                         </div>
                         {image[3] &&
                             <div className="hidden sm:block pt-5 aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
