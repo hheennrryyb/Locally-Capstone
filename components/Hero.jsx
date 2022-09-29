@@ -2,13 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Hero.module.scss'
 
+
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 
 import { urlFor } from '../lib/client';
 
 const Hero = ({ heroData }) => {
-
+    console.log(heroData)
     return (
         <>
             <div className={styles.container}>
@@ -23,7 +24,7 @@ const Hero = ({ heroData }) => {
                                         <p className='text-3xl lg:text-6xl font-bold text-white max-w-3xl text-center'>{data.largeText1}</p>
                                         <p className='text-md text-white py-3 max-w-sm text-center'>{data.desc}</p>
 
-                                        <button type="button" className="w-32 text-white bg-sky-500 hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-sky-300 font-medium rounded-md text-xl px-5 py-2.5 text-center mr-2 mb-2 ">{data.buttonText}</button>
+                                        <Link href={data.slug}><button type="button" className="w-32 text-white bg-sky-500 hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-sky-300 font-medium rounded-md text-xl px-5 py-2.5 text-center mr-2 mb-2 ">{data.buttonText}</button></Link>
                                     </div>
                                 </div>
                             </div>

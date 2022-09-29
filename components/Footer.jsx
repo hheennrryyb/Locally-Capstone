@@ -9,7 +9,7 @@ const Footer = () => {
         // { name: 'Home', href: '#', current: true },
         { name: 'Makers', href: '/retailer', current: false },
         { name: 'Maps', href: '/maps', current: false },
-        { name: 'About', href: '#', current: false },
+        { name: 'About', href: '/about', current: false },
     ]
     const categoryLinks = [
         { href: '/category', name: 'All Collections' },
