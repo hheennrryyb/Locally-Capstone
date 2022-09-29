@@ -2,12 +2,103 @@ import React, { useState, useEffect } from 'react'
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import { client } from '../../lib/client'
 import { urlFor } from '../../lib/client'
-import mapStyles from './mapStyles'
 import { MakersBio } from '../../components'
 import Link from 'next/link'
 import Image from 'next/image'
 
 function Map({ retailerData }) {
+    const mapStyles = [
+        {
+            "featureType": "water",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#b5cbe4"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "stylers": [
+                {
+                    "color": "#efefef"
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#83a5b0"
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#bdcdd3"
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#e3eed3"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "lightness": 33
+                }
+            ]
+        },
+        {
+            "featureType": "road"
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {},
+        {
+            "featureType": "road",
+            "stylers": [
+                {
+                    "lightness": 20
+                }
+            ]
+        }
+    ];
     const [selected, setSelected] = useState(null)
 
     // useEffect(() => {
