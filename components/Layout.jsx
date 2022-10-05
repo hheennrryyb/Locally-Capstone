@@ -11,10 +11,10 @@ const Layout = ({ children }) => {
                 <title>Locally</title>
                 {/* <link rel="shortcut icon" href="./favicon.ico" /> */}
             </Head>
-            <header>
+            <header className='pb-20 sm:pb-0'>
                 <Navbar />
             </header>
-            <main >
+            <main>
                 {/* //passing through from _app.js Components */}
                 {children}
             </main>

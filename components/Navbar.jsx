@@ -41,7 +41,7 @@ function Navbar() {
     return (
         <div className='show-top'>
 
-            <Disclosure as="nav" className="bg-white">
+            <Disclosure as="nav" className="bg-white fixed w-full z-50 sm:static">
                 {({ open }) => (
                     <>
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
