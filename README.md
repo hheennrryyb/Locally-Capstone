@@ -12,23 +12,38 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Locally E-commerce
+https://locally-capstone.vercel.app/
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Locally is my NextJS Ecommerce website centered around giving local boutique handcraft makers an accessible B2C platform. This project was a part of my final capstone project for my time at Brain station. The website is a feature-packed with e-commerce cart and checkout functionality, many dynamic routes and a beautiful UI. The project was a big undertaking considering the short time span I had and the functionality I had to develop for an MVP. Although I gained so much knowledge about new technologies, the app was also fulfilling to create because of the social responsibility and sustainability behind the project. **(2 Weeks to Develop)**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![Locally](https://user-images.githubusercontent.com/79873814/203249507-2596df34-a533-4ccf-851f-588cb1b8c062.gif)
 
-## Learn More
+Tech stack:
+-   Next JS - was a vital framework and was the best option for developing an ecommerce platform like this.
+  
+	-   An intuitive dynamic routes and page-based routing, building dynamic filebase routing for product, makers and categories pages.
+	    
+	-   Pre-rendering, server-side rendering (SSR) are supported for fast load times and improved SEO
+	    
+	-   Automatic code splitting for faster page loads.
+	    
+	-   Client-side routing with optimized prefetching.
+	    
+	-   API routes to build API endpoints with Serverless Functions.
+    
+    
 
-To learn more about Next.js, take a look at the following resources:
+-   Sanity CMS - was handling all the content on the website without the need for a complex backend. Data were queried using GROQ and using Next function getServerSideProps pre-render the page on each request. Sanity rich text, image handling, and content management were crucial in having a content-heavy website work.
+    
+-   UseContextAPI - Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+    
+-   Tailwind - was amazing to use to create an elegant UI
+    
+-   Stripe Payments SDK - Handling safe payments and checkout experiences.
+    
+-   Auth0 - Centralize and manage users from multiple identity providers and give them branded, seamless signup and login experiences.
+    
+-   Google Maps API
+    
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
